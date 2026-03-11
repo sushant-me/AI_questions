@@ -1,24 +1,17 @@
 import os
 import shutil
 
-# Configuration
+# This must match the folder name you pushed
 SOURCE_DIR = "pending_solutions"
-TARGET_DIR = "." # Move to the main folder
+TARGET_DIR = "." 
 
-# Get the list of generated files (day_116, day_117, etc.)
-if not os.path.exists(SOURCE_DIR):
-    print("Folder not found!")
-    exit()
-
-files = sorted([f for f in os.listdir(SOURCE_DIR) if f.endswith(".py")])
-
-if files:
-    next_file = files[0] # Take the first one in the list
-    source_path = os.path.join(SOURCE_DIR, next_file)
-    target_path = os.path.join(TARGET_DIR, next_file)
-    
-    # Move the file out of the hidden folder into the main repo
-    shutil.move(source_path, target_path)
-    print(f"Successfully moved {next_file}")
+if os.path.exists(SOURCE_DIR):
+    files = sorted([f for f in os.listdir(SOURCE_DIR) if f.endswith(".py")])
+    if files:
+        next_file = files[0]
+        shutil.move(os.path.join(SOURCE_DIR, next_file), os.path.join(TARGET_DIR, next_file))
+        print(f"Moved {next_file}")
+    else:
+        print("No files left!")
 else:
-    print("All 300 days are already uploaded!")
+    print("Folder not found!")
