@@ -1,0 +1,21 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def calculate_grade(self):
+        average = sum(self.marks) / len(self.marks)
+        if average >= 90:
+            return 'A'
+        elif average >= 80:
+            return 'B'
+        elif average >= 70:
+            return 'C'
+        elif average >= 60:
+            return 'D'
+        else:
+            return 'F'
+
+# Example usage
+student = Student('John Doe', [85, 92, 78, 90, 88])
+print(f"{student.name}'s grade is: {student.calculate_grade()}")

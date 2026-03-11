@@ -1,0 +1,23 @@
+name: Daily Auto Upload
+on:
+  schedule:
+    - cron: "30 4 * * *" # This runs every single day at 4:30 AM UTC
+  workflow_dispatch: # This button lets you test it manually on GitHub
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your code
+        uses: actions/checkout@v3
+
+      - name: Move one file
+        run: python drip_feed.py
+
+      - name: Commit and Push to GitHub
+        run: |
+          git config --global user.name "Auto-Bot"
+          git config --global user.email "bot@github.com"
+          git add .
+          git commit -m "Auto-update: Daily Python Practice" || exit 0
+          git push
