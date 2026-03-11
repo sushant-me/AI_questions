@@ -1,15 +1,15 @@
 name: Daily Auto Upload
 on:
   schedule:
-    - cron: "30 4 * * *" # This runs every single day at 4:30 AM UTC
-  workflow_dispatch: # This button lets you test it manually on GitHub
+    - cron: "30 4 * * *" # Runs at 4:30 AM UTC
+  workflow_dispatch: # Allows manual testing
 
 jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated from v3 to v4
 
       - name: Move one file
         run: python drip_feed.py
