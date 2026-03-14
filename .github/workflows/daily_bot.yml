@@ -16,8 +16,8 @@ jobs:
 
       - name: Commit and Push to GitHub
         run: |
-          git config --global user.name "Auto-Bot"
-          git config --global user.email "bot@github.com"
+          git config --global user.name "sushant-me"
+          git config --global user.email "sushant.poudel2028@gmail.com"
           git add .
           git commit -m "Auto-update: Daily Python Practice" || exit 0
           git push
