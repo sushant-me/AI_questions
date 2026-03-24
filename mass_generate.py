@@ -40,8 +40,14 @@ print(f"Extracted {len(questions)} items. Starting high-speed generation...")
 # 2. Optimized Generation Loop
 for i, question in enumerate(questions):
     day_num = i + 1
+    
+    # --- Skip everything before Day 277 ---
+    if day_num < 277: 
+        continue
+        
     # We only want to generate up to 300
-    if day_num > 300: break
+    if day_num > 300: 
+        break
     
     filename = f"day_{day_num:03d}.py"
     filepath = os.path.join(OUTPUT_DIR, filename)
